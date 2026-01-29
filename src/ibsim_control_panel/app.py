@@ -459,8 +459,7 @@ async def launch_terminal(launch_btn, reset_btn, stop_btn, empty_state_container
             term_iframe.content = new_content
 
         # Check connection script with page reload on failure
-        ui.run_javascript(
-            """
+        ui.run_javascript("""
             setTimeout(async function() {
                 try {
                     await fetch('http://localhost:7681', { mode: 'no-cors' });
@@ -476,8 +475,7 @@ async def launch_terminal(launch_btn, reset_btn, stop_btn, empty_state_container
                     setTimeout(() => window.location.reload(), 1500);
                 }
             }, 1000);
-        """
-        )
+        """)
 
         launch_btn.props(remove="loading")
         reset_btn.props(remove="loading")
@@ -541,13 +539,11 @@ def index():  # noqa: C901
     )
 
     # Add custom dark theme styling and Cytoscape
-    ui.add_head_html(
-        """
+    ui.add_head_html("""
         <link rel="stylesheet" href="/static/css/styles.css">
         <!-- Cytoscape.js core library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
-    """
-    )
+    """)
 
     # Modern header with gradient and status
     with ui.header().classes("px-6 py-4"):
@@ -812,8 +808,7 @@ def index():  # noqa: C901
                             ui.separator().props("vertical").classes("mx-2")
 
                             def delete_selected_handler():
-                                ui.run_javascript(
-                                    """
+                                ui.run_javascript("""
                                     var selected = window.cy.$(':selected');
                                     if (selected.length > 0) {
                                         if (confirm('Delete selected ' + selected.length + ' element(s)?')) {
@@ -833,8 +828,7 @@ def index():  # noqa: C901
                                             }
                                         }
                                     }
-                                """
-                                )
+                                """)
 
                             ui.button("Delete", icon="delete", on_click=delete_selected_handler).props(
                                 "flat color=negative outline size=sm"
@@ -915,8 +909,7 @@ def index():  # noqa: C901
                         # Update status when initialized
                         ui.timer(
                             1.0,
-                            lambda: ui.run_javascript(
-                                """
+                            lambda: ui.run_javascript("""
                             if (typeof window.cy !== "undefined" && window.cy) {
                                 document.querySelectorAll('.q-badge').forEach(b => {
                                     if (b.textContent.includes('Initializing')) {
@@ -926,8 +919,7 @@ def index():  # noqa: C901
                                     }
                                 });
                             }
-                        """
-                            ),
+                        """),
                             once=True,
                         )
 
@@ -1029,16 +1021,14 @@ def index():  # noqa: C901
                                 ui.notify(f"Failed to update node: {error_msg}", type="negative")
 
                         def delete_node_handler():
-                            ui.run_javascript(
-                                """
+                            ui.run_javascript("""
                                 if (window.cyState && window.cyState.selectedElement && window.cyState.selectedElement.type === 'node') {
                                     var node = window.cyState.selectedElement.element;
                                     if (confirm('Delete node "' + node.id() + '" and all its connections?')) {
                                         window.cyActions.deleteNode(node.id());
                                     }
                                 }
-                            """
-                            )
+                            """)
 
                         (
                             ui.button("Update Node", icon="check", on_click=update_node_handler)
@@ -1063,8 +1053,7 @@ def index():  # noqa: C901
                         ui.separator().classes("my-2")
 
                         def update_edge_handler():
-                            ui.run_javascript(
-                                """
+                            ui.run_javascript("""
                                 // Get all source/target port inputs and take the last ones (edge properties, not node properties)
                                 var sourcePortInputs = document.querySelectorAll('input[aria-label="Source Port"]');
                                 var targetPortInputs = document.querySelectorAll('input[aria-label="Target Port"]');
@@ -1078,20 +1067,17 @@ def index():  # noqa: C901
                                     var edge = window.cyState.selectedElement.element;
                                     window.cyActions.updateEdge(edge.id(), { sourcePort: sourcePort, targetPort: targetPort });
                                 }
-                            """
-                            )
+                            """)
 
                         def delete_edge_handler():
-                            ui.run_javascript(
-                                """
+                            ui.run_javascript("""
                                 if (window.cyState && window.cyState.selectedElement && window.cyState.selectedElement.type === 'edge') {
                                     var edge = window.cyState.selectedElement.element;
                                     if (confirm('Delete this connection?')) {
                                         window.cyActions.deleteEdge(edge.id());
                                     }
                                 }
-                            """
-                            )
+                            """)
 
                         (
                             ui.button("Update Connection", icon="check", on_click=update_edge_handler)
@@ -1182,8 +1168,7 @@ def index():  # noqa: C901
 
                     # Add JavaScript event listeners to update properties panel
                     # Store references for updating from JavaScript
-                    ui.add_body_html(
-                        """
+                    ui.add_body_html("""
                     <script>
                     (function() {
                         // Helper to find panel containers by looking for specific text
@@ -1355,8 +1340,7 @@ def index():  # noqa: C901
                         }, 500);
                     })();
                     </script>
-                    """
-                    )
+                    """)
 
     # Troubleshooting Panel with modern styling - kept outside tab_panels to preserve iframe state
     with ui.column().classes("w-full p-6").bind_visibility_from(tabs, "value", lambda v: v == "Troubleshoot"):
@@ -1408,8 +1392,7 @@ def index():  # noqa: C901
             "w-full bg-slate-800 border border-slate-700 text-slate-100 mb-4"
         ):
             with ui.card().classes("bg-slate-900/50 border-0 p-4"):
-                ui.markdown(
-                    """
+                ui.markdown("""
 ### Interactive Shell
 
 The terminal will automatically launch **ibsim-connect** which will:
@@ -1435,8 +1418,7 @@ The terminal will automatically launch **ibsim-connect** which will:
 - `saquery` - Query Subnet Administration data (requires OpenSM).
 
 **Note:** Traffic generation tools like `ibping` are not supported by ibsim as it only simulates management packets (MADs).
-"""
-                ).classes("text-slate-300 text-sm")
+""").classes("text-slate-300 text-sm")
 
         ui.separator().classes("my-4 bg-slate-700")
 
