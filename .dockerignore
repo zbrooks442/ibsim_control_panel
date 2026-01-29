@@ -1,0 +1,7 @@
+.git
+.venv
+__pycache__
+*.pyc
+main.py
+main.py.bak
+ruff_findings.txt
