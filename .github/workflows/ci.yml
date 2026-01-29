@@ -22,7 +22,7 @@ jobs:
           pip install .[dev]
           
       - name: Check formatting with Black
-        run: black ./ --check
+        run: black ./ --verbose --check
         
       - name: Lint with Ruff
         run: ruff check ./
