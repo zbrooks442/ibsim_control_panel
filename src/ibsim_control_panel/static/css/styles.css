@@ -1,0 +1,98 @@
+/* Global Styles */
+body {
+    background: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+.q-page {
+    background: #0f172a !important;
+    min-height: 100vh !important;
+}
+.q-header {
+    background: linear-gradient(to right, #0f172a, #1e293b) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+.q-tab {
+    color: #94a3b8 !important;
+    transition: all 0.3s ease !important;
+}
+.q-tab:hover {
+    color: #00d9ff !important;
+}
+.q-tab--active {
+    color: #00d9ff !important;
+}
+.q-tab__indicator {
+    background: #00d9ff !important;
+    height: 3px !important;
+}
+.q-tab-panel {
+    background: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+.q-tab-panels {
+    background: #0f172a !important;
+}
+.q-card {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    transition: all 0.3s ease !important;
+}
+.q-card:hover {
+    border-color: #475569 !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+.q-btn {
+    transition: all 0.2s ease !important;
+}
+.q-btn:hover {
+    transform: translateY(-1px) !important;
+}
+.q-textarea textarea, .q-field__native {
+    color: #f1f5f9 !important;
+    background: #0f172a !important;
+}
+.q-log {
+    background: #000000 !important;
+    color: #10b981 !important;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+    border: 1px solid #334155 !important;
+}
+.q-badge {
+    font-weight: 600 !important;
+    padding: 4px 12px !important;
+    border-radius: 9999px !important;
+}
+.q-separator {
+    background: #334155 !important;
+}
+.q-expansion-item {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Cytoscape container styling */
+#cy {
+    width: 100%;
+    height: 800px;
+    min-height: 600px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}

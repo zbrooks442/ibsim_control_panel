@@ -1,0 +1,89 @@
+# Generated Topology with SM nodes
+#
+Switch	32	"spine-01"
+[1]	"leaf-r01-01"[1]
+[2]	"leaf-r01-02"[1]
+[3]	"leaf-r02-01"[1]
+[4]	"leaf-r02-02"[1]
+
+Switch	32	"spine-02"
+[1]	"leaf-r01-01"[2]
+[2]	"leaf-r01-02"[2]
+[3]	"leaf-r02-01"[2]
+[4]	"leaf-r02-02"[2]
+
+Switch	32	"leaf-r01-01"
+[1]	"spine-01"[1]
+[2]	"spine-02"[1]
+[3]	"host-r01-01"[1]
+[4]	"host-r01-02"[1]
+[5]	"host-r01-03"[1]
+[6]	"host-r01-04"[1]
+[7]	"sm-primary"[1]
+
+Switch	32	"leaf-r01-02"
+[1]	"spine-01"[2]
+[2]	"spine-02"[2]
+[3]	"host-r01-01"[2]
+[4]	"host-r01-02"[2]
+[5]	"host-r01-03"[2]
+[6]	"host-r01-04"[2]
+[7]	"sm-primary"[2]
+
+Switch	32	"leaf-r02-01"
+[1]	"spine-01"[3]
+[2]	"spine-02"[3]
+[3]	"host-r02-01"[1]
+[4]	"host-r02-02"[1]
+[5]	"host-r02-03"[1]
+[6]	"host-r02-04"[1]
+[7]	"sm-secondary"[1]
+
+Switch	32	"leaf-r02-02"
+[1]	"spine-01"[4]
+[2]	"spine-02"[4]
+[3]	"host-r02-01"[2]
+[4]	"host-r02-02"[2]
+[5]	"host-r02-03"[2]
+[6]	"host-r02-04"[2]
+[7]	"sm-secondary"[2]
+
+Hca	2	"host-r01-01"
+[1]	"leaf-r01-01"[3]
+[2]	"leaf-r01-02"[3]
+
+Hca	2	"host-r01-02"
+[1]	"leaf-r01-01"[4]
+[2]	"leaf-r01-02"[4]
+
+Hca	2	"host-r01-03"
+[1]	"leaf-r01-01"[5]
+[2]	"leaf-r01-02"[5]
+
+Hca	2	"host-r01-04"
+[1]	"leaf-r01-01"[6]
+[2]	"leaf-r01-02"[6]
+
+Hca	2	"host-r02-01"
+[1]	"leaf-r02-01"[3]
+[2]	"leaf-r02-02"[3]
+
+Hca	2	"host-r02-02"
+[1]	"leaf-r02-01"[4]
+[2]	"leaf-r02-02"[4]
+
+Hca	2	"host-r02-03"
+[1]	"leaf-r02-01"[5]
+[2]	"leaf-r02-02"[5]
+
+Hca	2	"host-r02-04"
+[1]	"leaf-r02-01"[6]
+[2]	"leaf-r02-02"[6]
+
+Hca	2	"sm-primary"
+[1]	"leaf-r01-01"[7]
+[2]	"leaf-r01-02"[7]
+
+Hca	2	"sm-secondary"
+[1]	"leaf-r02-01"[7]
+[2]	"leaf-r02-02"[7]

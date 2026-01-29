@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+      - "7681:7681"
+    volumes:
+      - ./config:/config
+    environment:
+      - IBSIM_CONFIG_DIR=/config
